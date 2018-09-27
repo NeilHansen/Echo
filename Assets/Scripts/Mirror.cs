@@ -9,15 +9,15 @@ public class Mirror : MonoBehaviour {
 	void Start () {
         if (positive)
         {
-            //this.transform.rotation = new Quaternion(0, 0, 0,0);
-            this.transform.Rotate(Vector3.zero);
-            this.transform.Rotate(0, 0, 45.0f);
+            this.transform.GetChild(0).transform.rotation = new Quaternion(0, 0, 0, 0);
+            this.transform.GetChild(0).transform.Rotate(Vector3.zero);
+            this.transform.GetChild(0).transform.Rotate(0, 0, 45.0f);
         }
         else
         {
-            // this.transform.rotation = new Quaternion(0, 0, 0, 0);
-            this.transform.rotation = new Quaternion(0, 0, 0, 0);
-            this.transform.Rotate(0, 0, -45.0f);
+            this.transform.GetChild(0).transform.rotation = new Quaternion(0, 0, 0, 0);
+            this.transform.GetChild(0).transform.Rotate(Vector3.zero);
+            this.transform.GetChild(0).transform.Rotate(0, 0, -45.0f);
         }
 	}
 	

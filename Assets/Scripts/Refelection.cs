@@ -14,22 +14,29 @@ public class Refelection : MonoBehaviour {
     void Update()
     {
 
-        Debug.DrawLine(transform.position, transform.forward, Color.green);
+        Debug.DrawLine(transform.position, transform.up, Color.green);
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, 100.0f);
-            Debug.DrawLine(transform.position, transform.forward, Color.red, 3.0f);
+           
+            Debug.DrawLine(transform.position, transform.up, Color.red, 3.0f);
+            Debug.Log("shoot");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 100.0f);
 
-            if (hit != null)//hit != null && hit.collider != null && hit.collider)//hit.collider.gameObject.name == "Mirror")
+            if (hit.collider != null )
             {
-                Debug.Log(hit.collider.name);
-            //    Vector3 inDirection = Vector3.Reflect(transform.right, hit.normal);
+                Debug.Log("hit " + hit.collider.name);
+                //repeat for other faces
+                // bottom collider
+                if (hit.collider.gameObject.GetComponentInParent<Mirror>().positive == true && hit.collider.gameObject.name == "Bottomcollider")
+                {
+                    Debug.Log("Shoot Left");
 
-             //   Debug.DrawRay(hit.point, inDirection * 100, Color.red, 3.0f);
-             //   hit = Physics2D.Raycast(hit.point + hit.normal * 0.01f, inDirection, 100.0f);
-
-             
+                }
+                else if (hit.collider.gameObject.GetComponentInParent<Mirror>().positive == false && hit.collider.gameObject.name == "Bottomcollider")
+                {
+                    Debug.Log("Shoot Right");
+                }
             }
 
         }
